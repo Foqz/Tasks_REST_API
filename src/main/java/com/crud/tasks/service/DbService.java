@@ -8,14 +8,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 @Service
 public class DbService {
-    private static final Long id = 1L;
     @Autowired
     private TaskRepository repository;
 
     public List<Task> getAllTasks(){
         return repository.findAll();
     }
-    public List<Task> getTaskById(){
+    public List<Task> getTaskById(long id){
         return repository.findById(id);
     }
 }

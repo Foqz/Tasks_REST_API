@@ -13,6 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/v1/task")
 public class TaskController {
+    private static final Long id = 1l;
     @Autowired
     private DbService service;
     @Autowired
@@ -24,7 +25,7 @@ public class TaskController {
     }
     @RequestMapping(method = RequestMethod.GET,value = "getTaskById")
     public List<TaskDto> getTaskById() {
-        return taskMapper.mapToTaskDtoList(service.getTaskById());
+        return taskMapper.mapToTaskDtoList(service.getTaskById(id));
     }
 }
 
