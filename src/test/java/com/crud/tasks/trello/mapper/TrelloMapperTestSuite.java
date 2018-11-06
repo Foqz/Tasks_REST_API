@@ -96,4 +96,5 @@ public class TrelloMapperTestSuite {
         assertEquals("position2", trelloCard.getPos());
         assertEquals("2", trelloCard.getListId());
     }
+
 }
