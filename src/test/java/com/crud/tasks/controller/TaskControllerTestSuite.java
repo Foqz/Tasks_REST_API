@@ -26,6 +26,9 @@ import java.util.Optional;
 
 import static org.hamcrest.Matchers.is;
 import static org.mockito.Matchers.anyList;
+import static org.mockito.Matchers.anyLong;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -110,8 +113,9 @@ public class TaskControllerTestSuite {
     @Test
     public void deleteTask() throws Exception {
 
-        mockMvc.perform(delete("v1/task/deleteTask?taskId=1").contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isNotFound());
+        mockMvc.perform(delete("/v1/task/deleteTask?taskId=1").contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk());
+        verify(service,times(1)).deleteTask(anyLong());
 
     }
 }
